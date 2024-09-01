@@ -1,0 +1,275 @@
+---
+layout: default
+---
+
+<style>
+form div {padding:10px;}
+
+#download-protocol, .fileOutput {  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  width: 25%;
+
+}
+#description {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	margin-top: 1.5em;
+}
+#description-header {
+	padding-bottom: 0.5em;
+	margin-top: 0;
+}
+#the-id {
+	grid-column: 1;
+	display: block;
+	float: left;
+	padding-top: 0.5em;
+	padding-right: 1em;
+}
+#description-content {
+	grid-column: 2;
+}
+
+</style>
+<link rel="stylesheet" href="/scripts/upvotejs/upvotejs.css">
+<link rel="image/svg+xml" href="/scripts/upvotejs/upvotejs.svg">
+<script src="/scripts/upvotejs/upvotejs.vanilla.js"></script>
+
+
+<div class="selected-protocol">
+  <!---->
+  <span>
+    <div class="protocol-page">
+      <div id="author">
+        <h3 id="author-header"> Author: 
+          <a href="{{ page.author_link }}" id="author-content">{{ page.author }}</a>
+        </h3>
+      </div>
+
+
+      <div id="description">
+        <div id="the-id" class="upvotejs">
+	      <a class="upvote"></a>
+	      <span class="count">0</span>
+	      <a class="downvote"></a>
+    	  <a class="star"></a>
+	    </div>
+
+
+        <div id="description-content">
+    	  <h2 id="description-header">Description</h2>
+		  {{ page.description_content }}
+		</div>
+      </div>
+	  <!---->
+	  <!---->
+	  <!---->
+	  <!---->
+      <hr>
+	  <div id="materials-content">
+        <h2 id="materials-header">Materials</h2>
+		  {{ page.materials_content }}
+        <hr>
+		<!---->
+		<!---->
+		<!---->
+		<!---->
+        <h2 id="setup-header">Setup</h2>
+        <ul>
+          <li>Reservoir 1: slot 5 <br>
+            <img src="https://opentrons-protocol-library-website.s3.amazonaws.com/custom-README-images/1ccd23/res1_v2.png" alt="reservoir 1">
+          </li>
+          <li>Reservoir 2: slot 2 <br>
+            <img src="https://opentrons-protocol-library-website.s3.amazonaws.com/custom-README-images/1ccd23/res2.png" alt="reservoir 2">
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="robot-tab">
+      <span class="selected"> OT-2 </span>
+      <span class="filler"></span>
+    </div>
+    <h2 class="download-protocol-header">Download Protocol:</h2>
+    <div class="download-parametric">
+      <div id="download-protocol-pseudoform">
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <form id="download-protocol-form" onsubmit="event.preventDefault();"> <!--handleSubmit(event);">-->
+		  {% for x in page.protocol_setup %}
+          <div>
+            <label>{{ x.label }}</label>
+            {% if x.type == "number" %}
+              <input name="{{ x.key_value }}" type="{{ x.type }}" step="{{ x.step }}">
+            {% elsif x.type == "selector" %}
+              <select name="{{ x.key_value }}">
+              {% for option in x.option_values %}
+                <option value="{{ option.value }}">{{ option.text }}</option>
+              {% endfor %}
+              </select>
+        	{% endif %}
+            <!---->
+          </div>
+		  {% endfor %}
+          <!-- <input type="submit" id="download-protocol" data-gtm-action="master" data-gtm-category="Protocol-Download" data-gtm-label="1ccd23-station-B" value="Download For OT-2"> -->
+        </form>
+        {% include file_download.html %}
+      </div>
+    </div>
+    <!---->
+    <div class="ot2_deck_map_wrapper">
+      <div class="ot2_deck_map">
+        <iframe src="https://s3-us-west-2.amazonaws.com/protocol-library-kludge/production/index.html?data=%7B%22labware%22:%7B%221%22:%7B%22labwareType%22:%22opentrons_96_aluminumblock_nest_wellplate_100ul%22,%22name%22:%22elution%20plate%20on%20Temperature%20Module%20GEN2%20on%201%22%7D,%222%22:%7B%22labwareType%22:%22nest_12_reservoir_15ml%22,%22name%22:%22reagent%20reservoir%202%20on%202%22%7D,%223%22:%7B%22labwareType%22:%22opentrons_96_tiprack_300ul%22,%22name%22:%22200%C2%B5l%20filtertiprack%20on%203%22%7D,%224%22:%7B%22labwareType%22:%22nest_96_wellplate_2ml_deep%22,%22name%22:%22deepwell%20plate%20on%20Magnetic%20Module%20GEN2%20on%204%22%7D,%225%22:%7B%22labwareType%22:%22nest_12_reservoir_15ml%22,%22name%22:%22reagent%20reservoir%201%20on%205%22%7D,%226%22:%7B%22labwareType%22:%22opentrons_96_tiprack_300ul%22,%22name%22:%22200%C2%B5l%20filtertiprack%20on%206%22%7D,%227%22:%7B%22labwareType%22:%22opentrons_96_tiprack_300ul%22,%22name%22:%22200%C2%B5l%20filtertiprack%20(parking)%20on%207%22%7D,%228%22:%7B%22labwareType%22:%22opentrons_96_tiprack_300ul%22,%22name%22:%22200%C2%B5l%20filtertiprack%20on%208%22%7D,%229%22:%7B%22labwareType%22:%22opentrons_96_tiprack_300ul%22,%22name%22:%22200%C2%B5l%20filtertiprack%20on%209%22%7D,%2210%22:%7B%22labwareType%22:%22opentrons_96_tiprack_300ul%22,%22name%22:%22200%C2%B5l%20filtertiprack%20on%2010%22%7D,%2211%22:%7B%22labwareType%22:%22nest_1_reservoir_195ml%22,%22name%22:%22Liquid%20Waste%20on%2011%22%7D,%2212%22:%7B%22labwareType%22:%22opentrons_1_trash_1100ml_fixed%22,%22name%22:%22Opentrons%20Fixed%20Trash%20on%2012%22%7D%7D,%22modules%22:%7B%7D%7D" mytubeid="mytube1"></iframe>
+      </div>
+    </div>
+	<hr>
+    <div class="protocol-page">
+      <div id="process">
+        <h2 id="process-header">Process:</h2>
+        <div id="process-content">
+          <ol>
+          	{{ page.process_steps }}
+          </ol>
+        </div>
+      </div>
+	  <hr>
+      <div id="notes">
+        <h3 id="notes-header">Additional Notes:</h3>
+        <div id="notes-content">
+          {{ page.additional_notes }}
+        </div>
+      </div>
+    </div>
+  </span>
+  <!---->
+</div>
+
+
+
+<script>
+var callback = function(data) {
+    $.ajax({
+        url: '/vote',
+        type: 'post',
+        data: data
+    });
+};
+Upvote.create('the-id', {count: 5, upvoted: true});
+//Upvote.create('the-id', {callback: callback});
+/*
+document.getElementsByClassName("upvotejs")[0].upvote();
+document.getElementsByClassName("upvotejs")[0].upvote({count: 5, upvoted: true});
+document.getElementsByClassName("upvotejs")[0].upvote({count: 5, downvoted: true});
+document.getElementsByClassName("upvotejs")[0].upvote({count: 5, upvoted: true, starred: true});
+
+var callback = function(data) {
+    $.ajax({
+        url: '/vote',
+        type: 'post',
+        data: data
+    });
+};
+document.getElementsByClassName("upvotejs")[0].upvote({id: 123, callback: callback});
+
+// Create, pick up initial values from HTML markup
+document.getElementsByClassName("upvotejs")[0].upvote();
+
+// Mutators
+document.getElementsByClassName("upvotejs")[0].upvote('upvote');       // Upvote!
+document.getElementsByClassName("upvotejs")[0].upvote('downvote');     // Downvote!
+document.getElementsByClassName("upvotejs")[0].upvote('star');         // Star!
+
+// Getters
+document.getElementsByClassName("upvotejs")[0].upvote('count');        // Get the current vote count
+document.getElementsByClassName("upvotejs")[0].upvote('upvoted');      // Get the upvoted state -> boolean
+document.getElementsByClassName("upvotejs")[0].upvote('downvoted');    // Get the downvoted state -> boolean
+document.getElementsByClassName("upvotejs")[0].upvote('starred');      // Get the starred state -> boolean
+*/
+</script>
+
+
+
+
+<script>
+// downloading of python file from current directory:
+//setTimeout(function () { //TODO update location
+//  //Download('https://github.com/jquery/jquery/archive/master.zip');
+//  // downloads the python file -- assuming the name of the file is exactly the same as the .md file name // TODO make note for naming conventions for files
+//  Download("{{site.url}}/{{page.path | replace: ".md", ".py" }}");
+//});
+
+function Download(url) {
+  location.href = url;
+}
+
+function handleSubmit(event) {
+    event.preventDefault();
+
+	console.log('pressed');
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Retrieve form data
+    const formData = new FormData(event.target);
+
+    // Create an object to store form values
+    const formDataObject = {};
+
+    // Convert FormData to JSON
+    formData.forEach((value, key) => {
+        formDataObject[key] = value;
+    });
+
+    // Convert object to JSON string
+    const formDataJSON = JSON.stringify(formDataObject);
+
+    // Output the JSON data
+    console.log(formDataJSON);
+
+
+    // You can also perform AJAX requests or other actions here
+    Download("{{ site.url }}/{{ page.path | replace: ".md", ".py" }}"); // TODO - may not need the url and only the path for downloads
+}
+
+/*
+document.addEventListener("DOMContentLoaded", function(event) { // <-- add this wrapper
+
+// Get the form element
+const form = document.getElementById("download-protocol");
+
+// Add event listener for form submission
+form.addEventListener("submit", handleSubmit);
+
+}); // <---DOMContentLoaded closing
+*/
+</script>
+
+{% comment %}
+// get the path and remove the last file to get folder path as array
+{% capture protocol_path %}{{ site.url }}/{{ page.path }}{% endcapture %}
+{{protocol_path}}
+{% assign = protocol_test = protocol_path | split:"/" %}
+{{protocol_test}}
+
+// gets the folder path to search from
+{% capture protocol_folder_path %}
+{% for item in protocol_test %}{% if item != protocol_test.last %}{{ item }}/{% endif %}{% endfor %}
+{% endcapture %}
+
+{{protocol_folder_path}}
+{% endcomment %}

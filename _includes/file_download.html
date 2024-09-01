@@ -1,0 +1,22 @@
+
+<!-- to get the folder file path to the rendered .md file and remove the last file (.md) to get folder path as array and convert it into folder path -->
+{% capture protocol_path %}{{ site.url }}/{{ page.path }}{% endcapture %}
+{% assign = protocol_test = protocol_path | split:"/" %}
+{% capture protocol_folder_path %}
+{% for item in protocol_test %}{% if item != protocol_test.last %}{{ item }}/{% endif %}{% endfor %}
+{% endcapture %}
+
+<div>
+    <div class="fileOutput">
+        <input type="url" name="repoUrl" id="repoUrl" value="{{protocol_folder_path}}" placeholder="Enter Repository URL or Folder Path" class="w-full md:w-6/12 border-2 border-green-300 p-2 rounded ring-red-300 focus:outline-none" required hidden>
+        <button id="gitDown" class="bg-gradient-to-r from-green-600 to-cyan-700 text-white py-2 px-2 rounded">
+        	Download For OT-2
+    	</button> <!-- Downloads the actual zip file and json file when pressed -->
+    	<a href="" id="json-file" hidden>click here to download your json file</a>
+    </div>
+
+    <script type="module" src="{{ site.url }}/scripts/folderdownload/utils/fileDisplay.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.5.0/jszip.min.js"></script>
+    
+
+</div>    
