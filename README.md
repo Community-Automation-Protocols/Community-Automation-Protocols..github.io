@@ -1,5 +1,5 @@
-# Community-Automation-Protocols.github.io
-Website for open source Automation Protocols in the scientific research industry
+# [Community-Automation-Protocols.github.io](https://community-automation-protocols.github.io/)
+Community website hosting open-source Automation Protocols for the scientific research community.
 
 </br>
 
