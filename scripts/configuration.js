@@ -93,12 +93,6 @@ function summaryList(itemType, itemList, location) {
 	return subsectionSummary;
 }
 
-//
-// ADAM additions
-//
-//
-//
-
 // offloading the filling of the drop downs for labware to be generated on page load
 
 const deckPositions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
